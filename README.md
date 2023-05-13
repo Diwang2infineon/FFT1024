@@ -15,3 +15,6 @@ The script `023.py` converts the complex array from a hexadecimal format to a fl
 ## Script 024.py:
 
 Finally, the script `024.py` converts the output from `023.py` to a format that can be imported into a MATLAB program. The resulting output is saved to a text file named `024output.txt`.
+
+### The purpose of 025.py:
+The purpose of the `025.py` code is to generate shuffle numbers for Q15 1024 FFT, specifically for use in pass 5.
