@@ -22,5 +22,5 @@ The purpose of the `025.py` code is to generate shuffle numbers for Q15 1024 FFT
 ## 03.m
 This `.m` file is used to perform a 16-point Q15 FFT using the provided assembly code. The output is scaled by dividing each value by 16 and then multiplying by 32768 to make it comparable with the Q15 format used in the 16-point FFT assembly code.
 
-<!-- This .c file calculates the radix-4 DIF which is verified by a 16-point FFT. -->
-<!-- The results are compared with the Q15 16-point radix-4 DIF assembly code. -->
+# 001.c C Code
+This .c file is used to calculate the radix-4 DIF, which is verified by a 16-point FFT. The results obtained are compared with the Q15 16-point radix-4 DIF assembly code.
