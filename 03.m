@@ -1,3 +1,10 @@
+
+    
+#    03.m
+#    This .m file is used to perform a 16-point Q15 FFT using the provided assembly code. 
+#    The output is scaled by dividing each value by 16 and then multiplying by 32768
+#    to make it comparable with the Q15 format used in the 16-point FFT assembly code.
+
 X1Q15_fft16 = [
     -0.35379 + 0.53381i;
     -0.56195 + 0.82718i;
