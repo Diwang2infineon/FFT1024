@@ -18,3 +18,5 @@ Finally, the script `024.py` converts the output from `023.py` to a format that 
 
 ### The purpose of 025.py:
 The purpose of the `025.py` code is to generate shuffle numbers for Q15 1024 FFT, specifically for use in pass 5.
+
+This `.m` file is used to perform a 16-point Q15 FFT using the provided assembly code. The output is scaled by dividing each value by 16 and then multiplying by 32768 to make it comparable with the Q15 format used in the 16-point FFT assembly code.
