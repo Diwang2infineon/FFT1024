@@ -24,3 +24,7 @@ This `.m` file is used to perform a 16-point Q15 FFT using the provided assembly
 
 ## 001.c 
 This .c file is used to calculate the radix-4 DIF, which is verified by a 16-point FFT. The results obtained are compared with the Q15 16-point radix-4 DIF assembly code.
+
+## 026.py
+This Python code converts signed bytes to int16 and outputs the real and imaginary parts of the twiddle values.
+
