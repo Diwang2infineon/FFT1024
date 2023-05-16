@@ -28,3 +28,12 @@ This .c file is used to calculate the radix-4 DIF, which is verified by a 16-poi
 ## 026.py
 This Python code converts signed bytes to int16 and outputs the real and imaginary parts of the twiddle values.
 
+## 027.py
+Python Code: Converting Signed Bytes to Int16 and Extracting Twiddle Values
+This Python code converts signed bytes to int16 and outputs the real and imaginary parts of the twiddle values.
+The purpose of the "027.py" script is to convert all signed bytes into 16-bit signed integers. By dividing the obtained values by 32768, we can convert them into real and imaginary values ranging from -1 to 1. The script also utilizes the W factor for an FFT length of 1024 to determine the value of k for each twiddle.
+For the "etwiddle" case, there are 256 * 3 twiddles, resulting in a total of 768 twiddles. Similarly, for the "ptwiddle" case, there are 64 * 3 twiddles, resulting in a total of 192 twiddles. Overall, there are 960 twiddles in total, each associated with a specific value of k.
+- 256 * 3 = 768 for etwiddle
+- 64 * 3 = 192 for ptwiddle
+- 320 * 3 = 960 for all the twiddles
+
