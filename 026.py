@@ -26,5 +26,6 @@ decimal_values = [positive_byte_list[i+1] * 256 + positive_byte_list[i] for i in
 # Print the decimal values
 for value in decimal_values:
     if (value >32767):
-        value=65536-value;
+        value=value-65536;
     print(value/32767)
+
