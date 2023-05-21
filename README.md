@@ -37,3 +37,16 @@ For the "etwiddle" case, there are 256 * 3 twiddles, resulting in a total of 768
 - 64 * 3 = 192 for ptwiddle
 - 320 * 3 = 960 for all the twiddles
 
+## main.c
+<!--
+This `main.c` file is built using ADS (AURIX Development Studio) and can be inserted into any example project for building. The call to `Ifx_FftF32_radix2` is located in the iLLD's `sysse/math` path. The input parameter for this function is a complex array defined as follows:
+
+```c
+/* INPUT Data used by the example */
+csint16 X1Q15_fft1024_[fftLength_fft1024] = {
+    /* Real  Imaginary */
+    {0xD2B7, 0x4453},   // -0.35379 + 0.53381i
+    {0xB812, 0x69E1}    // -0.56195 + 0.82718i
+};
+Each integer value in the array ranges from -32768 to 32767, representing the range of -1 to 1. The real and imaginary parts are specified for each value, and the result is processed in the same manner.
+-->
