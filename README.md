@@ -37,9 +37,9 @@ For the "etwiddle" case, there are 256 * 3 twiddles, resulting in a total of 768
 - 64 * 3 = 192 for ptwiddle
 - 320 * 3 = 960 for all the twiddles
 
-## main.c
+## SoftwareFFT_main.c
 
-This `main.c` file is built using ADS (AURIX Development Studio) and can be inserted into any example project for building. The call to `Ifx_FftF32_radix2` is located in the iLLD's `sysse/math` path. The input parameter for this function is a complex array defined as follows:
+This `SoftwareFFT_main.c` file is built using ADS (AURIX Development Studio) and can be inserted into any example project for building. The call to `Ifx_FftF32_radix2` is located in the iLLD's `sysse/math` path. The input parameter for this function is a complex array defined as follows:
 
 ```c
 /* INPUT Data used by the example */
