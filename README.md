@@ -53,5 +53,8 @@ Each integer value in the array ranges from -32768 to 32767, representing the ra
 
 ## 032.py
 An alternative method for generating a reordering sequence involves utilizing bit reversal. You can find an example implementation in the .py file.
+## 04.m
+In this MATLAB code, a 256 Hz sine waveform is generated with 1024 points. The sample rate is set to 1024 Hz, and the FFT result is computed up to 1024 Hz. By analyzing the output FFT result, you can observe a peak at 256 Hz, corresponding to the frequency of the generated waveform.
 
+Since the Nyquist frequency is half of the sample rate (512 Hz in this case), any frequencies exceeding the Nyquist frequency can be ignored in the output FFT result.
 
