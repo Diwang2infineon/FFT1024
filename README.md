@@ -52,7 +52,6 @@ csint16 X1Q15_fft1024_[fftLength_fft1024] = {
 Each integer value in the array ranges from -32768 to 32767, representing the range of -1 to 1. The real and imaginary parts are specified for each value, and the result is processed in the same manner.
 
 ## 032.py
-An alternative method for generating a reordering sequence involves utilizing bit reversal. You can find an example implementation in the following .py file, as well as refer to another function called Ifx_FftF32_reverseBits() in the software FFT source code:
-The Ifx_FftF32_reverseBits() function provides an additional way to achieve bit reversal for reordering sequences.
+An alternative method for generating a reordering sequence involves utilizing bit reversal. You can find an example implementation in the .py file.
 
 
