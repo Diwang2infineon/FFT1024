@@ -37,6 +37,9 @@ For the "etwiddle" case, there are 256 * 3 twiddles, resulting in a total of 768
 ## 032.py
 An alternative method for generating a reordering sequence involves utilizing bit reversal. You can find an example implementation in the .py file.
 
+
+# C code
+
 ## SoftwareFFT_main.c
 
 This `SoftwareFFT_main.c` file is built using ADS (AURIX Development Studio) and can be inserted into any example project for building. The call to `Ifx_FftF32_radix2` is located in the iLLD's `sysse/math` path. The input parameter for this function is a complex array defined as follows:
@@ -51,7 +54,7 @@ csint16 X1Q15_fft1024_[fftLength_fft1024] = {
 ```
 Each integer value in the array ranges from -32768 to 32767, representing the range of -1 to 1. The real and imaginary parts are specified for each value, and the result is processed in the same manner.
 
-# C code
+
 
 ## 001.c 
 This .c file is used to calculate the radix-4 DIF, which is verified by a 16-point FFT. The results obtained are compared with the Q15 16-point radix-4 DIF assembly code.
