@@ -4,7 +4,7 @@ https://octave-online.net/
 
 
 
-# Script Descriptions
+
 # Python code
 ##  022.py:
 
