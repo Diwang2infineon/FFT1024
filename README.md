@@ -104,5 +104,6 @@ This `.m` file is used to perform a 16-point Q15 FFT using the provided assembly
 In this MATLAB code, a 256 Hz sine waveform is generated with 1024 points. The sample rate is set to 1024 Hz, and the FFT result is computed up to 1024 Hz. By analyzing the output FFT result, you can observe a peak at 256 Hz, corresponding to the frequency of the generated waveform.
 
 Since the Nyquist frequency is half of the sample rate (512 Hz in this case), any frequencies exceeding the Nyquist frequency can be ignored in the output FFT result.
+
 ![image](https://github.com/Diwang2infineon/FFT1024/assets/98080665/0d1f0653-6f31-4317-a10b-ccfee932cb4b)
 
