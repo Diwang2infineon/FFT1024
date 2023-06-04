@@ -90,6 +90,7 @@ The resulting FFT output is printed to the console using the `printf` function.
 ### Notes
 
 Please note that the code assumes the existence of external data structures and constants, such as `Ifx_g_FftF32_twiddleTable` and `Ifx_g_FftF32_bitReverseTable`, which are not included in this code snippet.
+![image](https://github.com/Diwang2infineon/FFT1024/assets/98080665/56385cc6-79d6-4ff9-9339-1737bead2c26)
 
 
 
