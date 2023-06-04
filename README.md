@@ -104,6 +104,8 @@ This MATLAB code performs the following operations on the input data:
 3. Divides the resulting output by 1024 for comparison with the Q15 ASM FFT.
 4. Displays the hexadecimal code using the `dec2hex` function.
 
+![image](https://github.com/Diwang2infineon/FFT1024/assets/98080665/534a3ebc-12b7-4088-802f-e94e1d01ae38)
+
 
 ## 03.m
 This `.m` file is used to perform a 16-point Q15 FFT using the provided assembly code. The output is scaled by dividing each value by 16 and then multiplying by 32768 to make it comparable with the Q15 format used in the 16-point FFT assembly code.
