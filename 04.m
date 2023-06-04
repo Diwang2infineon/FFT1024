@@ -21,7 +21,7 @@ signalFrequency = 256;        % Signal frequency in Hz
 pointsPerCycle = sampleFrequency / signalFrequency;  % Number of points per cycle
 
 % Generate signal
-t = linspace(0, numPoints/sampleFrequency, numPoints);  % Time vector
+t = linspace(0, numPoints/sampleFrequency, numPoints+1);  % Time vector
 signal = sin(2*pi*signalFrequency*t);  % Generate signal (sine wave)
 
 % Perform FFT
