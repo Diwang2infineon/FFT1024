@@ -96,6 +96,14 @@ Please note that the code assumes the existence of external data structures and 
 
 
 # MATLAB code
+## 02.m
+### Magnified FFT Calculation in MATLAB
+This MATLAB code performs the following operations on the input data:
+1. Multiplies the data by 32768 to magnify it.
+2. Performs a Fast Fourier Transform (FFT) of size 1024 on the magnified data.
+3. Divides the resulting output by 1024 for comparison with the Q15 ASM FFT.
+4. Displays the hexadecimal code using the `dec2hex` function.
+
 
 ## 03.m
 This `.m` file is used to perform a 16-point Q15 FFT using the provided assembly code. The output is scaled by dividing each value by 16 and then multiplying by 32768 to make it comparable with the Q15 format used in the 16-point FFT assembly code.
