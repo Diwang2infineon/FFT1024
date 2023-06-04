@@ -109,7 +109,7 @@ fft_result = fft(data, 1024);
 fft_result = fft_result * (32768 / 1024);
 
 % Further processing or analysis can be performed on the fft_result as needed.
-
+```
 
 ![image](https://github.com/Diwang2infineon/FFT1024/assets/98080665/0b562193-6e77-46ed-94c4-e81d5b234cc7)
 
