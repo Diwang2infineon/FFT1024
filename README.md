@@ -59,6 +59,41 @@ Each integer value in the array ranges from -32768 to 32767, representing the ra
 ## 001.c 
 This .c file is used to calculate the radix-4 DIF, which is verified by a 16-point FFT. The results obtained are compared with the Q15 16-point radix-4 DIF assembly code.
 
+## 002.c Fast Fourier Transform (FFT) Implementation
+
+This C code implements a software Fast Fourier Transform (FFT) algorithm to perform a 16-point FFT using the standard radix-2 decimation-in-time (DIT) approach. Additionally, it supports a 1024-point FFT.
+
+### Overview
+
+The FFT algorithm is widely used to convert time-domain signals into their frequency-domain representations. The radix-2 DIT algorithm recursively divides the input signal into smaller blocks and applies the FFT operation to each block.
+
+The code includes the necessary functions and data structures to perform the FFT. It utilizes the `cfloat32` structure to represent complex numbers, which consist of real and imaginary parts. The code also defines lookup tables for twiddle factors and bit-reversed indices.
+
+### Main Function
+
+The `main` function serves as the entry point for the code. It initializes the input array and arranges it in bit-reversed order. Then, it calls the `Ifx_FftF32_radix2DecimationInTime` function to perform the FFT on the input array.
+
+### Supporting Functions
+
+The following supporting functions are used within the FFT algorithm:
+
+- `Ifx_FftF32_lookUpReversedBits`: This function retrieves the bit-reversed index for a given value.
+- `Ifx_FftF32_lookUpTwiddleFactor`: It returns the twiddle factor based on the FFT size and index.
+- `IFX_Cf32_mul`: This function performs complex multiplication of two `cfloat32` numbers.
+- `IFX_Cf32_add`: It adds two `cfloat32` numbers.
+- `IFX_Cf32_sub`: This function subtracts two `cfloat32` numbers.
+
+### FFT Result
+
+The resulting FFT output is printed to the console using the `printf` function.
+
+### Notes
+
+Please note that the code assumes the existence of external data structures and constants, such as `Ifx_g_FftF32_twiddleTable` and `Ifx_g_FftF32_bitReverseTable`, which are not included in this code snippet.
+
+
+
+
 # MATLAB code
 
 ## 03.m
