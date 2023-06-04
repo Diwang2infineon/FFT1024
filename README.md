@@ -100,6 +100,9 @@ Please note that the code assumes the existence of external data structures and 
 ## 03.m
 This `.m` file is used to perform a 16-point Q15 FFT using the provided assembly code. The output is scaled by dividing each value by 16 and then multiplying by 32768 to make it comparable with the Q15 format used in the 16-point FFT assembly code.
 
+![image](https://github.com/Diwang2infineon/FFT1024/assets/98080665/0b38a4ac-ba36-4bf5-b2db-ac6da324e308)
+
+
 ## 04.m
 In this MATLAB code, a 256 Hz sine waveform is generated with 1024 points. The sample rate is set to 1024 Hz, and the FFT result is computed up to 1024 Hz. By analyzing the output FFT result, you can observe a peak at 256 Hz, corresponding to the frequency of the generated waveform.
 
