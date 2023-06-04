@@ -96,6 +96,14 @@ Please note that the code assumes the existence of external data structures and 
 
 
 # MATLAB code
+## 01.m
+### FFT Calculation in MATLAB
+The purpose of this MATLAB code is to compute the Fast Fourier Transform (FFT) of size 1024 on the input data.
+% Perform further computations or comparisons with the Q15 ASM FFT output
+
+![image](https://github.com/Diwang2infineon/FFT1024/assets/98080665/0b562193-6e77-46ed-94c4-e81d5b234cc7)
+
+
 ## 02.m
 ### Magnified FFT Calculation in MATLAB
 This MATLAB code performs the following operations on the input data:
