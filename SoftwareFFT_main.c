@@ -1,9 +1,9 @@
 /*
 This main.c file is built using ADS (AURIX Development Studio) and can be inserted into any example project for building. The call to Ifx_FftF32_radix2 is located in the iLLD's sysse/math path. The input parameter for this function is a complex array defined as follows:
 
-/* INPUT Data used by the example */
+// INPUT Data used by the example 
 csint16 X1Q15_fft1024_[fftLength_fft1024] = {
-/* Real Imaginary */
+// Real Imaginary 
 {0xD2B7, 0x4453}, // -0.35379 + 0.53381i
 {0xB812, 0x69E1} // -0.56195 + 0.82718i
 };
