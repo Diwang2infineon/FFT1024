@@ -11,18 +11,24 @@
  *
  ******************************************************************************/
 
+
 #include <stdio.h>
 
-/** \brief Define custom types */
+// Define custom types
 typedef unsigned int uint32;
-typedef unsigned int boolean_t;
-typedef unsigned int uint32_t;
 typedef unsigned char uint8;
-typedef unsigned char uint8_t;
 typedef float float32;
+
 typedef signed char sint8;
 
-/** \brief Define structures for QSPI */
+
+
+typedef unsigned int uint32_t;
+typedef unsigned char uint8_t;
+typedef signed char sint8_t;
+typedef float float32_t;
+typedef unsigned char boolean_t;
+
 typedef struct
 {
     volatile unsigned int GLOBALCON;
@@ -48,24 +54,22 @@ typedef struct
     volatile unsigned int RXEXITINTMASK;
 } Ifx_QSPI;
 
-/** \brief Structure for extended configuration of QSPI */
 typedef struct
 {
-    uint32 U;
+    uint32_t U;
     struct
     {
-        uint32 Q     : 6;
-        uint32 A     : 6;
-        uint32 C     : 6;
-        uint32 B     : 6;
-        uint32 CPH   : 1;
-        uint32 CPOL  : 1;
-        uint32 PAREN : 1;
-        uint32 reserved : 5;
+        uint32_t Q     : 6;
+        uint32_t A     : 6;
+        uint32_t C     : 6;
+        uint32_t B     : 6;
+        uint32_t CPH   : 1;
+        uint32_t CPOL  : 1;
+        uint32_t PAREN : 1;
+        uint32_t reserved : 5;
     } B;
 } Ifx_QSPI_ECON;
 
-/** \brief Structure for channel configuration of SPI */
 typedef struct
 {
     uint32_t baudrate;
@@ -77,41 +81,40 @@ typedef struct
     } mode;
 } SpiIf_ChConfig;
 
-/** \brief Boolean enumeration */
 typedef enum
 {
     FALSE = 0,
     TRUE = 1
 } boolean;
 
-/** \brief Macro for absolute value */
+
+
+
+
+
+
+
+
+
 #define __absf(X) ((X) < 0.0 ? -(X) : (X))
 
-/** \brief Macro for less than or equal to comparison for floats */
-#define __leqf(X, Y) (!(X > Y))
+#define __leqf(X, Y) (!(X > Y)) /**< X <= Y */
+#define __geqf(X, Y) (!(X < Y)) /**< X >= Y */
 
-/** \brief Macro for greater than or equal to comparison for floats */
-#define __geqf(X, Y) (!(X < Y))
 
-/** \brief Macro for not equal to comparison for floats */
-#define __neqf(X,Y) (((X) > (Y)) || ((X) < (Y)))
+#define __neqf(X,Y)                     ( ((X) > (Y)) ||  ((X) < (Y)) )     /**< X != Y */
 
-/**
- * \brief Function to calculate extended configuration value for QSPI
- *
- * \param qspi Pointer to QSPI structure
- * \param cs Chip select
- * \param chConfig Pointer to channel configuration
- * \return Calculated extended configuration value
- */
+
 uint32 IfxQspi_calculateExtendedConfigurationValue(Ifx_QSPI *qspi, const uint8 cs, const SpiIf_ChConfig *chConfig)
 {
+    //IFX_UNUSED_PARAMETER(cs);
+
     Ifx_QSPI_ECON econ;
     econ.U = 0;
 
     const int     maxB   = 3;
-    float32       tQspi  = 1.0 / 100000000; // IfxQspi_getTimeQuantaFrequency(qspi);
-    float32       fBaud  = 20000000; // (chConfig->baudrate);
+    float32       tQspi  = 1.0 / 100000000;// IfxQspi_getTimeQuantaFrequency(qspi);
+    float32       fBaud  =20000000;// (chConfig->baudrate);
     int           abcMin = (2);
     int           abcMax = (4 + 0 + 4);
     int           q, bestQ = 1, abc, bestAbc = abcMax, halfBaud = 0;
@@ -122,10 +125,12 @@ uint32 IfxQspi_calculateExtendedConfigurationValue(Ifx_QSPI *qspi, const uint8 c
 
     if (fBaud == 0.0)
     {
+        //IFX_ASSERT(IFX_VERBOSE_LEVEL_WARNING, FALSE);   /* chosen baud rate is 0 */
         fBaud = 1.0;
     }
 
     float32 tBaud = 1.0 / fBaud;
+
     bestError = 1e6;
 
     for (abc = abcMax; abc >= abcMin; abc--)
@@ -137,10 +142,12 @@ uint32 IfxQspi_calculateExtendedConfigurationValue(Ifx_QSPI *qspi, const uint8 c
         {
             q = 64;
         }
+
         else if ((q * abc) < 4)
         {
             q = 2;
         }
+
         else if (q < 1)
         {
             q = 1;
@@ -149,8 +156,9 @@ uint32 IfxQspi_calculateExtendedConfigurationValue(Ifx_QSPI *qspi, const uint8 c
         tBaudTmp = tTmp * q;
         error    = __absf(tBaudTmp - tBaud);
 
-        if (__leqf(error, bestError))
+        if (__leqf(error, bestError)) /* we have a equal/better error case */
         {
+            /* process this case only if lesser error / or if ABC is even */
             if (__neqf(error, bestError) || (((uint32)bestAbc & (uint32)0x1) == 0))
             {
                 bestError = error;
@@ -158,6 +166,7 @@ uint32 IfxQspi_calculateExtendedConfigurationValue(Ifx_QSPI *qspi, const uint8 c
                 bestQ     = q;
             }
 
+            /* break out if ABC is even and error = 0 */
             if (((uint32)bestAbc & (uint32)0x1) == 0)
             {
                 done = (__neqf(error, 0.0)) ? FALSE : TRUE;
@@ -170,31 +179,64 @@ uint32 IfxQspi_calculateExtendedConfigurationValue(Ifx_QSPI *qspi, const uint8 c
         }
     }
 
-    if ((bestQ <= abcMax) && (((uint32)bestAbc & (uint32)0x1) != 0) && (((uint32)bestQ & (uint32)0x1) == 0))
+    /* Exchange Q and ABC, if ABC is odd and Q is even.
+     * This is because: A+1+B+C is ideally even for
+     * achieving 50% duty cycle of the clock.
+     */
+    if ((bestQ <= abcMax)
+        && (((uint32)bestAbc & (uint32)0x1) != 0)
+        && (((uint32)bestQ & (uint32)0x1) == 0))
     {
         q       = bestQ;
         bestQ   = bestAbc;
         bestAbc = q;
     }
 
+    /* NOTE: In assigning values to A,B,C:
+     *  the "sampling point" (which is A+B) has to be as far as possible
+     *  from the "shifting point" (end of A+B+C).
+     * The duty cycle is calculated as the ratio of A : B+C
+     * Therefore, to keep 50% duty cycle: A = B+C
+     * Thus, we cannot influence the value of A, once A+B+C is found out
+     * (A+1 is always (A+B+C)/2).
+     * However, in between B and C - we should try to maximize B (and minimize C).
+     * The goal will be to do this - keep max value of B always and keep only any remaining value for C .
+     */
     halfBaud     = bestAbc / 2;
     diffB        = halfBaud - maxB;
 
     econ.B.Q     = bestQ - 1;
-    econ.B.A     = halfBaud + (bestAbc % 2) - 1;
+    econ.B.A     = halfBaud + (bestAbc % 2) - 1;  /* A + 1 = Half of Baud count */
     econ.B.C     = (diffB > 0) ? diffB : 0;
     econ.B.B     = (diffB > 0) ? maxB : halfBaud;
+
+    //econ.B.CPH   = (chConfig->mode.shiftClock == SpiIf_ShiftClock_shiftTransmitDataOnLeadingEdge) ? 1 : 0;
+    //econ.B.CPOL  = (chConfig->mode.clockPolarity == SpiIf_ClockPolarity_idleLow) ? 0 : 1;
     econ.B.PAREN = chConfig->mode.parityCheck;
 
     return econ.U;
 }
 
-/** \brief Main function */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main()
 {
-    Ifx_QSPI qspi;  // Assuming QSPI is initialized
+    Ifx_QSPI qspi;  // 假设已经初始化
     SpiIf_ChConfig chConfig;
-    chConfig.baudrate = 20000000;  // Set baud rate to 20 MHz
+    chConfig.baudrate = 20000000;  // 设置波特率为 20 MHz
     chConfig.mode.parityCheck = 0;
     chConfig.mode.clockPolarity = 0;
     chConfig.mode.shiftClock = 1;
