@@ -1,18 +1,3 @@
-/*
-
-BALLBMP BITMAP "ball.bmp" // can be found in the Templates folder, please copy to the project folder
-MASKBMP BITMAP "ballmask.bmp" // as above
-
-
-
-#  saved above code into resource.rc file
-*/
-
-/* 
-   Name: WinAnim
-   Author: Brook Miles
-   Description: Making an animation in windows
-*/
 /******************************************************************************
  * \file WinAnim.c
  *
@@ -25,6 +10,13 @@ MASKBMP BITMAP "ballmask.bmp" // as above
  * \author Brook Miles
  *
  ******************************************************************************/
+
+/*
+BALLBMP BITMAP "ball.bmp" // can be found in the Templates folder, please copy to the project folder
+MASKBMP BITMAP "ballmask.bmp" // as above
+
+#  saved above code into resource.rc file
+*/
 
 #include <windows.h>
 
