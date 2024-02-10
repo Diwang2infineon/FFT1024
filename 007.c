@@ -13,6 +13,18 @@ MASKBMP BITMAP "ballmask.bmp" // as above
    Author: Brook Miles
    Description: Making an animation in windows
 */
+/******************************************************************************
+ * \file WinAnim.c
+ *
+ * \brief Making an animation in Windows using bitmaps
+ *
+ * This file demonstrates how to create a simple animation in Windows using
+ * bitmaps. It loads two bitmaps, one for the ball and another for the mask,
+ * and animates the movement of the ball within the window.
+ *
+ * \author Brook Miles
+ *
+ ******************************************************************************/
 
 #include <windows.h>
 
