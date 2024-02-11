@@ -1,3 +1,9 @@
+# This code is designed to generate shuffle numbers for a Q15 1024 Fast Fourier Transform (FFT), specifically tailored for use in the fifth pass of the FFT algorithm. 
+
+# The process involves initializing a list 'fft_indices' containing indices from 0 to 1023. It then iterates through a series of passes, updating 'fft_indices' based on specific patterns and requirements for each pass. 
+
+# The final result is printed in a desired format, where each line represents a set of shuffle numbers for the FFT.
+
 #The purpose of the 025.py code is to generate shuffle numbers for Q15 1024 FFT, specifically for use in pass 5.
 
 fft_indices = list(range(1024))
