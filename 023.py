@@ -1,3 +1,12 @@
+# This code snippet imports the re module for regular expression operations.
+# It opens an input file named '023.txt' for reading and an output file named '023output.txt' for writing.
+# The code iterates through each line of the input file.
+# For each line, it finds all hexadecimal numbers using a regular expression pattern.
+# Then, it converts the hexadecimal numbers to decimal integers, adjusting for signed 16-bit representation.
+# Next, it converts the decimal integers to floating point numbers, scaling them to the range [-1, 1].
+# Finally, it writes the floating point numbers to the output file.
+
+
 import re
 # Open input and output files
 with open('023.txt', 'r') as f_in, open('023output.txt', 'w') as f_out:
