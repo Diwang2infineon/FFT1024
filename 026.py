@@ -1,3 +1,13 @@
+# This Python code converts signed bytes to int16 and outputs the real and imaginary parts of the twiddle values.
+
+# The 'data' variable contains a string representation of signed bytes separated by commas and newline characters.
+# It removes unwanted characters and splits the string into a list of integers representing the bytes.
+# Negative bytes are converted to positive by adding 256.
+# Each byte is then converted to a 2-digit hexadecimal string and concatenated.
+# The result is printed.
+
+# The code combines each pair of bytes into a 16-bit integer, considering the first byte as the least significant byte.
+# It outputs the decimal values of these integers, adjusting for signed 16-bit representation and scaling them to the range [-1, 1].
 #
 #This Python code converts signed bytes to int16 and outputs the real and imaginary parts of the twiddle values.
 #
