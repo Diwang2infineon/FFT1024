@@ -1,3 +1,10 @@
+# This code snippet imports the re module for regular expression operations and the sys module for system-specific parameters and functions.
+# It redirects the standard output to a file named '024output.txt'.
+# The code opens the file '023output.txt' for reading and reads its contents.
+# Then, it uses regular expressions to extract numbers from the contents and stores them as floats in a list.
+# The code iterates over the list of numbers, formatting and printing them in the desired format.
+# Finally, it closes the standard output file.
+
 import re
 import sys
 sys.stdout = open('024output.txt', 'w')
